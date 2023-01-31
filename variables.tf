@@ -31,6 +31,12 @@ variable "access_policies" {
   description = "a policy document that specifies actions that opensearch can make on your behalf - principal must be es.amazonaws.com"
 }
 
+variable "automated_snapshot_start_hour" {
+  type        = number
+  description = "the hour in which snapshots will occur"
+  default     = 23
+}
+
 variable "availability_zone_count" {
   type        = number
   description = "number of availability zones for the domain to use"
@@ -58,8 +64,14 @@ variable "cold_storage_enabled" {
 }
 
 variable "create_service_linked_role" {
-  type = bool 
+  type        = bool
   description = "whether to create a service linked role for OpenSearch - only one per account"
+}
+
+variable "custom_endpoint_enabled" {
+  type        = bool
+  description = "create custom endpoint for the domain cluster"
+  default     = false
 }
 
 variable "dedicated_master_count" {
@@ -82,7 +94,6 @@ variable "domain_name_suffix" {
   description = "the domain name suffix that follows the stack name"
   default     = "opensearch"
 }
-
 
 variable "ebs_enabled" {
   type        = bool
@@ -112,6 +123,12 @@ variable "ebs_volume_type" {
   type        = string
   description = "type of ebs volumes"
   default     = "gp3"
+}
+
+variable "enforce_https" {
+  type        = bool
+  description = "enforce traffic to be over https protocol only"
+  default     = true
 }
 
 variable "engine_version" {
