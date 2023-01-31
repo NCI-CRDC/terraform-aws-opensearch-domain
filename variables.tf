@@ -26,6 +26,11 @@ variable "program" {
   }
 }
 
+variable "access_policies" {
+  type = string 
+  description = "a policy document that specifies actions that opensearch can make on your behalf - principal must be es.amazonaws.com"
+}
+
 variable "availability_zone_count" {
   type        = number
   description = "number of availability zones for the domain to use"
