@@ -24,3 +24,14 @@ variable "program" {
     error_message = "valid values for program are 'crdc', 'ccdi', and 'ctos'"
   }
 }
+
+variable "domain_name_suffix" {
+  type        = string
+  description = "the domain name suffix that follows the stack name"
+  default     = "opensearch"
+}
+
+variable "engine_version" {
+  type        = string
+  description = "the opensearch engine version"
+}
