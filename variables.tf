@@ -146,6 +146,16 @@ variable "instance_type" {
   description = "type of instance of the domain cluster"
 }
 
+variable "security_group_ids" {
+  type = set(string)
+  description = "id of the security group(s) to associate with the cluster"
+}
+
+variable "subnet_ids" {
+  type = set(string)
+  description = "ids of the target subnet(s) for the opensearch cluster deployment"
+}
+
 variable "warm_count" {
   type        = number
   description = "number of warm nodes in the domain cluster"
