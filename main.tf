@@ -71,26 +71,20 @@ resource "aws_opensearch_domain" "os" {
   }
 
   log_publishing_options {
-    enabled                  = var.enable_os_index_slow_logs
-    cloudwatch_log_group_arn = var.index_slow_logs_cloudwatch_log_group
+    enabled                  = true
+    cloudwatch_log_group_arn = var.cloudwatch_index_slow_log_group
     log_type                 = "INDEX_SLOW_LOGS"
   }
 
   log_publishing_options {
-    enabled                  = var.enable_os_search_slow_logs
-    cloudwatch_log_group_arn = var.search_slow_logs_cloudwatch_log_group
+    enabled                  = true
+    cloudwatch_log_group_arn = var.cloudwatch_search_slow_log_group
     log_type                 = "SEARCH_SLOW_LOGS"
   }
 
   log_publishing_options {
-    enabled                  = var.enable_os_application_logs
-    cloudwatch_log_group_arn = var.error_logs_cloudwatch_log_group
+    enabled                  = true
+    cloudwatch_log_group_arn = var.cloudwatch_error_log_group
     log_type                 = "ES_APPLICATION_LOGS"
-  }
-
-  log_publishing_options {
-    enabled                  = var.enable_audit_logs
-    cloudwatch_log_group_arn = var.audit_logs_cloudwatch_log_group
-    log_type                 = "AUDIT_LOGS"
   }
 }

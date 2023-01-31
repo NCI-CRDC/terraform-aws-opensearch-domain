@@ -31,6 +31,21 @@ variable "availability_zone_count" {
   description = "number of availability zones for the domain to use"
 }
 
+variable "cloudwatch_error_log_group" {
+  type        = string
+  description = "arn of the log group that will collect opensearch error logs"
+}
+
+variable "cloudwatch_index_slow_log_group" {
+  type        = string
+  description = "arn of the log group that collects opensearch index slow logs"
+}
+
+variable "cloudwatch_search_slow_log_group" {
+  type        = string
+  description = "arn of the log group that collects opensearch search slow logs"
+}
+
 variable "cold_storage_enabled" {
   type        = bool
   description = "whether to enable cold storage - master and ultrawarm nodes but be enabled for cold storage to be compatible"
