@@ -31,15 +31,31 @@ variable "availability_zone_count" {
   description = "number of availability zones for the domain to use"
 }
 
+variable "cold_storage_enabled" {
+  type        = bool
+  description = "whether to enable cold storage - master and ultrawarm nodes but be enabled for cold storage to be compatible"
+  default     = false
+}
+
+variable "dedicated_master_count" {
+  type        = number
+  description = "number of dedicated master nodes in the cluster"
+}
+
+variable "dedicated_master_enabled" {
+  type        = bool
+  description = "whether dedicated master nodes are turned-on for the cluster"
+}
+
+variable "dedicated_master_type" {
+  type        = string
+  description = "type of dedicated master nodes for the cluster"
+}
+
 variable "domain_name_suffix" {
   type        = string
   description = "the domain name suffix that follows the stack name"
   default     = "opensearch"
-}
-
-variable "engine_version" {
-  type        = string
-  description = "the opensearch engine version"
 }
 
 
@@ -71,6 +87,39 @@ variable "ebs_volume_type" {
   type        = string
   description = "type of ebs volumes"
   default     = "gp3"
+}
+
+variable "engine_version" {
+  type        = string
+  description = "the opensearch engine version"
+}
+
+variable "instance_count" {
+  type        = number
+  description = "number of instances in the domain cluster"
+}
+
+variable "instance_type" {
+  type        = string
+  description = "type of instance of the domain cluster"
+}
+
+variable "warm_count" {
+  type        = number
+  description = "number of warm nodes in the domain cluster"
+  default     = null
+}
+
+variable "warm_enabled" {
+  type        = bool
+  description = "whether to enable warm storage"
+  default     = false
+}
+
+variable "warm_type" {
+  type        = string
+  description = "instance type for warm nodes - valid values are ultrawarm1.medium.search, ultrawarm1.large.search and ultrawarm1.xlarge.search"
+  default     = null
 }
 
 variable "zone_awareness_enabled" {
