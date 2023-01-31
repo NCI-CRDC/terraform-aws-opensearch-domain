@@ -40,6 +40,7 @@ No modules.
 | <a name="input_cloudwatch_index_slow_log_group"></a> [cloudwatch\_index\_slow\_log\_group](#input\_cloudwatch\_index\_slow\_log\_group) | arn of the log group that collects opensearch index slow logs | `string` | n/a | yes |
 | <a name="input_cloudwatch_search_slow_log_group"></a> [cloudwatch\_search\_slow\_log\_group](#input\_cloudwatch\_search\_slow\_log\_group) | arn of the log group that collects opensearch search slow logs | `string` | n/a | yes |
 | <a name="input_cold_storage_enabled"></a> [cold\_storage\_enabled](#input\_cold\_storage\_enabled) | whether to enable cold storage - master and ultrawarm nodes but be enabled for cold storage to be compatible | `bool` | `false` | no |
+| <a name="input_create_service_linked_role"></a> [create\_service\_linked\_role](#input\_create\_service\_linked\_role) | whether to create a service linked role for OpenSearch - only one per account | `bool` | n/a | yes |
 | <a name="input_dedicated_master_count"></a> [dedicated\_master\_count](#input\_dedicated\_master\_count) | number of dedicated master nodes in the cluster | `number` | n/a | yes |
 | <a name="input_dedicated_master_enabled"></a> [dedicated\_master\_enabled](#input\_dedicated\_master\_enabled) | whether dedicated master nodes are turned-on for the cluster | `bool` | n/a | yes |
 | <a name="input_dedicated_master_type"></a> [dedicated\_master\_type](#input\_dedicated\_master\_type) | type of dedicated master nodes for the cluster | `string` | n/a | yes |
