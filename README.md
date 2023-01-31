@@ -26,8 +26,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_iam_service_linked_role.os](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_service_linked_role) | resource |
-| [aws_opensearch_domain.os](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain) | resource |
+| [aws_iam_service_linked_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_service_linked_role) | resource |
+| [aws_opensearch_domain.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain) | resource |
 
 # Inputs
 
@@ -35,12 +35,14 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_policies"></a> [access\_policies](#input\_access\_policies) | a policy document that specifies actions that opensearch can make on your behalf - principal must be es.amazonaws.com | `string` | n/a | yes |
 | <a name="input_app"></a> [app](#input\_app) | the name of the application expressed as an acronym | `string` | n/a | yes |
+| <a name="input_automated_snapshot_start_hour"></a> [automated\_snapshot\_start\_hour](#input\_automated\_snapshot\_start\_hour) | the hour in which snapshots will occur | `number` | `23` | no |
 | <a name="input_availability_zone_count"></a> [availability\_zone\_count](#input\_availability\_zone\_count) | number of availability zones for the domain to use | `number` | n/a | yes |
 | <a name="input_cloudwatch_error_log_group"></a> [cloudwatch\_error\_log\_group](#input\_cloudwatch\_error\_log\_group) | arn of the log group that will collect opensearch error logs | `string` | n/a | yes |
 | <a name="input_cloudwatch_index_slow_log_group"></a> [cloudwatch\_index\_slow\_log\_group](#input\_cloudwatch\_index\_slow\_log\_group) | arn of the log group that collects opensearch index slow logs | `string` | n/a | yes |
 | <a name="input_cloudwatch_search_slow_log_group"></a> [cloudwatch\_search\_slow\_log\_group](#input\_cloudwatch\_search\_slow\_log\_group) | arn of the log group that collects opensearch search slow logs | `string` | n/a | yes |
 | <a name="input_cold_storage_enabled"></a> [cold\_storage\_enabled](#input\_cold\_storage\_enabled) | whether to enable cold storage - master and ultrawarm nodes but be enabled for cold storage to be compatible | `bool` | `false` | no |
 | <a name="input_create_service_linked_role"></a> [create\_service\_linked\_role](#input\_create\_service\_linked\_role) | whether to create a service linked role for OpenSearch - only one per account | `bool` | n/a | yes |
+| <a name="input_custom_endpoint_enabled"></a> [custom\_endpoint\_enabled](#input\_custom\_endpoint\_enabled) | create custom endpoint for the domain cluster | `bool` | `false` | no |
 | <a name="input_dedicated_master_count"></a> [dedicated\_master\_count](#input\_dedicated\_master\_count) | number of dedicated master nodes in the cluster | `number` | n/a | yes |
 | <a name="input_dedicated_master_enabled"></a> [dedicated\_master\_enabled](#input\_dedicated\_master\_enabled) | whether dedicated master nodes are turned-on for the cluster | `bool` | n/a | yes |
 | <a name="input_dedicated_master_type"></a> [dedicated\_master\_type](#input\_dedicated\_master\_type) | type of dedicated master nodes for the cluster | `string` | n/a | yes |
@@ -50,6 +52,7 @@ No modules.
 | <a name="input_ebs_throughput"></a> [ebs\_throughput](#input\_ebs\_throughput) | throughput (MiB) of the ebs volumes - valid range between 125 and 1000 | `number` | `125` | no |
 | <a name="input_ebs_volume_size"></a> [ebs\_volume\_size](#input\_ebs\_volume\_size) | size of the volumes attached to each node (GB) | `number` | `10` | no |
 | <a name="input_ebs_volume_type"></a> [ebs\_volume\_type](#input\_ebs\_volume\_type) | type of ebs volumes | `string` | `"gp3"` | no |
+| <a name="input_enforce_https"></a> [enforce\_https](#input\_enforce\_https) | enforce traffic to be over https protocol only | `bool` | `true` | no |
 | <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | the opensearch engine version | `string` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | the target tier ('dev', 'qa', 'stage', or 'prod'.) | `string` | n/a | yes |
 | <a name="input_instance_count"></a> [instance\_count](#input\_instance\_count) | number of instances in the domain cluster | `number` | n/a | yes |
