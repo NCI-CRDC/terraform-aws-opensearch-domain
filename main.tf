@@ -13,8 +13,8 @@ resource "aws_iam_service_linked_role" "os" {
 }
 
 resource "aws_opensearch_domain" "os" {
-  domain_name    = "${local.stack}-${var.domain_name_suffix}"
-  engine_version = var.engine_version
+  domain_name     = "${local.stack}-${var.domain_name_suffix}"
+  engine_version  = var.engine_version
   access_policies = var.access_policies
 
   cluster_config {

@@ -27,7 +27,7 @@ variable "program" {
 }
 
 variable "access_policies" {
-  type = string 
+  type        = string
   description = "a policy document that specifies actions that opensearch can make on your behalf - principal must be es.amazonaws.com"
 }
 
