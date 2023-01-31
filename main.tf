@@ -4,6 +4,7 @@ resource "aws_iam_service_linked_role" "os" {
   aws_service_name = "opensearchservice.amazonaws.com"
   description      = "creates the AWSServiceRoleForAmazonOpenSearchService role"
 
+
   lifecycle {
     ignore_changes = [
       tags_all,
@@ -34,12 +35,12 @@ resource "aws_opensearch_domain" "os" {
     zone_awareness_enabled = var.zone_awareness_enabled
 
     zone_awareness_config {
-      availability_zone_count = var.availability_zone_count
+      availability_zone_count = var.zone_awareness_enabled ? var.availability_zone_count : null
     }
   }
 
   ebs_options {
-    ebs_enabled = var.ebs_enabled
+    ebs_enabled = var.ebs_options.ebs_enabled
     volume_size = var.ebs_enabled ? var.ebs_volume_size : null
     iops        = var.ebs_enabled ? var.ebs_iops : null
     volume_type = var.ebs_enabled ? var.ebs_volume_type : null
@@ -91,55 +92,5 @@ resource "aws_opensearch_domain" "os" {
     enabled                  = var.enable_audit_logs
     cloudwatch_log_group_arn = var.audit_logs_cloudwatch_log_group
     log_type                 = "AUDIT_LOGS"
-  }
-}
-
-resource "aws_opensearch_domain_policy" "os" {
-  count = var.create_domain_policy ? 1 : 0
-
-  domain_name     = aws_opensearch_domain.os.domain_name
-  access_policies = data.aws_iam_policy_document.os[count.index].json
-
-  lifecycle {
-    ignore_changes = [
-      access_policies,
-    ]
-  }
-}
-
-data "aws_iam_policy_document" "os" {
-  count = var.create_domain_policy ? 1 : 0
-
-  statement {
-    effect = "Allow"
-    actions = [
-      "es:ESHttpPut",
-      "es:ESHttpPost",
-      "es:ESHttpPatch",
-      "es:ESHttpHead",
-      "es:ESHttpGet",
-      "es:ESHttpDelete"
-    ]
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-    resources = ["${aws_opensearch_domain.os.arn}/*"]
-  }
-}
-
-data "aws_iam_policy_document" "cloudwatch" {
-  statement {
-    effect = "Allow"
-    principals {
-      type        = "Service"
-      identifiers = ["es.amazonaws.com"]
-    }
-    actions = [
-      "logs:PutLogEvents",
-      "logs:PutLogEventsBatch",
-      "logs:CreateLogStream"
-    ]
-    resources = ["arn:aws:logs:*"]
   }
 }
