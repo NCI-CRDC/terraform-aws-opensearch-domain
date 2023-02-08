@@ -152,7 +152,7 @@ variable "security_group_ids" {
 }
 
 variable "subnet_ids" {
-  type = set(string)
+  type = list(string)
   description = "ids of the target subnet(s) for the opensearch cluster deployment"
 }
 

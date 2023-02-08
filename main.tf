@@ -49,7 +49,7 @@ resource "aws_opensearch_domain" "this" {
   }
 
   vpc_options {
-    subnet_ids         = var.subnet_ids
+    subnet_ids         = var.zone_awareness_enabled ? var.subnet_ids : tolist(element(var.subnet_ids,0))
     security_group_ids = var.security_group_ids
   }
 
