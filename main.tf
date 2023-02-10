@@ -49,7 +49,7 @@ resource "aws_opensearch_domain" "this" {
   }
 
   vpc_options {
-    subnet_ids         = var.zone_awareness_enabled ? var.subnet_ids : [ element(var.subnet_ids,0) ]
+    subnet_ids         = var.zone_awareness_enabled ? var.subnet_ids : [element(var.subnet_ids, 0)]
     security_group_ids = var.security_group_ids
   }
 
@@ -87,5 +87,12 @@ resource "aws_opensearch_domain" "this" {
     enabled                  = true
     cloudwatch_log_group_arn = var.cloudwatch_error_log_group
     log_type                 = "ES_APPLICATION_LOGS"
+  }
+
+  lifecycle {
+
+    ignore_changes = [
+      vpc_options["subnet_ids"]
+    ]
   }
 }

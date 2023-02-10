@@ -147,12 +147,12 @@ variable "instance_type" {
 }
 
 variable "security_group_ids" {
-  type = set(string)
+  type        = set(string)
   description = "id of the security group(s) to associate with the cluster"
 }
 
 variable "subnet_ids" {
-  type = list(string)
+  type        = list(string)
   description = "ids of the target subnet(s) for the opensearch cluster deployment"
 }
 
