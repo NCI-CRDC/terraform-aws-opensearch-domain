@@ -92,7 +92,7 @@ resource "aws_opensearch_domain" "this" {
   lifecycle {
 
     ignore_changes = [
-      vpc_options["subnet_ids"]
+      zone_awareness_config["availability_zone_count"]
     ]
   }
 }
