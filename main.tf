@@ -88,11 +88,4 @@ resource "aws_opensearch_domain" "this" {
     cloudwatch_log_group_arn = var.cloudwatch_error_log_group
     log_type                 = "ES_APPLICATION_LOGS"
   }
-
-  lifecycle {
-
-    ignore_changes = [
-      zone_awareness_config.availability_zone_count
-    ]
-  }
 }
